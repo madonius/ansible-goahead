@@ -1,38 +1,40 @@
-Role Name
-=========
+# goahead
 
-A brief description of the role goes here.
+Ansible role to query [xorpaul](https://github.com/xorpaul)'s goahead server whether this machine is safe to restart or not.
 
-Requirements
-------------
+## Requirements
 
-Any pre-requisites that may not be covered by Ansible itself or the role should be mentioned here. For instance, if the role uses the EC2 module, it may be a good idea to mention in this section that the boto package is required.
+__None__
 
-Role Variables
---------------
+## Role Variables
 
-A description of the settable variables for this role should go here, including any variables that are in defaults/main.yml, vars/main.yml, and any variables that can/should be set via parameters to the role. Any variables that are read from other roles and/or the global scope (ie. hostvars, group vars, etc.) should be mentioned here as well.
+### Mandatory
 
-Dependencies
-------------
+* **goahead_service_url** the service's URL __example: https://goahead-service.domain.tld/__
+* **goahead_service_url_ca_file** the certificate to authenticate agains the server __example: /etc/ssl/certs/optional-ca.pem__
 
-A list of other roles hosted on Galaxy should go here, plus any details in regards to parameters that may need to be set for other roles, or variables that are used from other roles.
+### Optional
 
-Example Playbook
-----------------
+| Option 			| Description 		| Default value |
+| :---   			| :---        		| :---          |
+| goahead_requesting_fqdn 	| the requested fqdn 	| `{{ ansible_fqdn }}` |
 
-Including an example of how to use your role (for instance, with variables passed in as parameters) is always nice for users too:
+## Dependencies
 
-    - hosts: servers
-      roles:
-         - { role: username.rolename, x: 42 }
+__None__
 
-License
--------
+# Example Playbook
 
-BSD
+```yaml
+- hosts: servers
+  roles:
+    - role: goahead_service_url
+```
 
-Author Information
-------------------
+## License
 
-An optional section for the role authors to include contact information, or a website (HTML is not allowed).
+MIT
+
+## Author Information
+
+* [/madonius](https://github.com/madonius)
